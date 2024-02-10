@@ -1,0 +1,77 @@
+<div class="mb-3">
+  <label for="" class="form-label">Categories</label>
+  <select
+    class="form-select form-select-lg"
+    [(ngModel)]="selectedCat"
+    name=""
+    id=""
+  >
+    <option *ngFor="let cat of categories" [value]="cat.id">
+      {{ cat.name }}
+    </option>
+  </select>
+</div>
+<app-product
+  #product
+  [recivedSelectedCat]="selectedCat"
+  (onBuy)="showComponent($event)"
+></app-product>
+<section class="" style="background-color: mintgreen">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <p class="h2 py-2">Shopping Cart</p>
+        <div class="card mb-4" *ngFor="let item of cartElements">
+          <div class="card-body p-4">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <img
+                  [src]="item.imageUrl"
+                  class="img-fluid"
+                  alt="Generic placeholder image"
+                />
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div>
+                  <p class="small text-muted mb-4 pb-2">Name</p>
+                  <p class="lead fw-normal mb-0">{{ item.name }}</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div>
+                  <p class="small text-muted mb-4 pb-2">Quantity</p>
+                  <p class="lead fw-normal mb-0">{{ item.totalQuantity }}</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div>
+                  <p class="small text-muted mb-4 pb-2">Price</p>
+                  <p class="lead fw-normal mb-0">{{ item.price }}</p>
+                </div>
+              </div>
+              <div class="col d-flex justify-content-center">
+                <div (click)="removeItem(item.id, item.price)">
+                  <p class="small text-muted mb-4 pb-2">Delete</p>
+                  <i class="fas fa-trash fa-lg text-danger" ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-5">
+          <div class="card-body p-4">
+            <div class="float-start">
+              <p class="mb-0 me-5 d-flex align-items-center">
+                <span class="small text-muted me-2">Order total:</span>
+                <span class="lead fw-normal">{{ totalPrice }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary mb-2" (click)="reduseQuant()">
+          Checkout Order
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

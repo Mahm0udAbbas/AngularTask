@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "camera sony",
+      "quantity": 20,
+      "price": 78000,
+      "imageUrl": "./assets/images/sony.jpeg",
+      "catId": 1001
+    },
+    {
+      "id": "2",
+      "name": "HP LabTop",
+      "quantity": 6,
+      "price": 23000,
+      "imageUrl": "./assets/images/hp.jpeg",
+      "catId": 1002
+    },
+    {
+      "id": "3",
+      "name": "Dell LabTop",
+      "quantity": 8,
+      "price": 23000,
+      "imageUrl": "./assets/images/dell.jpeg",
+      "catId": 1002
+    },
+    {
+      "id": "4",
+      "name": "Iphone 15",
+      "quantity": 0,
+      "price": 65000,
+      "imageUrl": "./assets/images/iphone.webp",
+      "catId": 1003
+    },
+    {
+      "id": "5",
+      "name": "Xiaomi",
+      "quantity": 10,
+      "price": 15000,
+      "imageUrl": "./assets/images/xiaomi.jpeg",
+      "catId": 1003
+    },
+    {
+      "id": "0c3b",
+      "name": "iphone13",
+      "quantity": 2,
+      "price": 40000,
+      "imageUrl": "C:\\fakepath\\iphone-13-blue-select-2021_1.png",
+      "catId": "1003"
+    },
+    {
+      "id": "5621",
+      "name": "laptop",
+      "quantity": 10,
+      "price": 15000,
+      "catId": "1002",
+      "imageUrl": "C:\\fakepath\\hp.jpeg"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1002",
+      "name": "labtops"
+    },
+    {
+      "id": "1003",
+      "name": "mobiles"
+    },
+    {
+      "id": "1001",
+      "name": "cameras"
+    }
+  ]
+}

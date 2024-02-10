@@ -1,0 +1,105 @@
+<form #addProductForm="ngForm" class="px-4 my-5" (ngSubmit)="addNewProduct()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input
+      required
+      [(ngModel)]="product.name"
+      pattern="^[a-zA-Z]{3,15}$"
+      type="text"
+      class="form-control my-3"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder=" "
+      #nameInp="ngModel"
+      name="name"
+    />
+    @if(nameInp.touched){
+
+    <div class="my-3">
+      @if(nameInp.errors?.["required"]) {
+      <span class="text-danger alert alert-danger">Name is required</span>
+      } @if(nameInp.errors?.["pattern"]) {
+      <span class="text-danger alert alert-danger">
+        Name must be at least 3 characters</span
+      >
+      }
+    </div>
+    }
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Quantity:</label>
+    <input
+      required
+      [(ngModel)]="product.quantity"
+      type="number"
+      class="form-control my-3"
+      id="exampleInputPassword1"
+      placeholder=""
+      name="quantity"
+      #quantityInp="ngModel"
+    />
+    @if(quantityInp.touched){
+    <div class="my-3">
+      @if(quantityInp.errors?.["required"]) {
+      <span class="text-danger">Quantity is required</span>
+      }
+    </div>
+    }
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">price:</label>
+    <input
+      required
+      [(ngModel)]="product.price"
+      type="number"
+      class="form-control my-3"
+      id="exampleInputPassword1"
+      placeholder=""
+      name="price"
+      #priceInp="ngModel"
+    />
+    @if(priceInp.touched){
+    <div class="my-3">
+      @if(priceInp.errors?.["required"]) {
+      <span class="text-danger">Price is required</span>
+      }
+    </div>
+    }
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Image:</label>
+    <input
+      required
+      [(ngModel)]="product.imageUrl"
+      type="file"
+      class="form-control my-3"
+      id="exampleInputPassword1"
+      placeholder=""
+      name="imageurl"
+      #imageInp="ngModel"
+    />
+    @if(imageInp.touched){
+    <div class="my-3">
+      @if(priceInp.errors?.["required"]) {
+      <span class="text-danger">Image is required</span>
+      }
+    </div>
+    }
+  </div>
+  <div class="form-group my-3">
+    <label for="exampleInputPassword1">Categories</label>
+    <select
+      class="form-select"
+      [(ngModel)]="product.catId"
+      aria-label="Default select example"
+      name="catId"
+    >
+      <option value="default" selected>select Category</option>
+      @for(cat of catList;track cat.id){
+      <option [value]="cat.id">{{ cat.name }}</option>
+      }
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">ADD</button>
+</form>

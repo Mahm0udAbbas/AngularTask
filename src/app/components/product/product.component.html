@@ -1,0 +1,56 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  <ng-container *ngFor="let item of filteredProducts">
+    @if(item.quantity > 0){
+    <div class="col my-5">
+      <!-- *ngIf="item.quantity != 0" -->
+
+      <div
+        appProductCard
+        inputColor="#D9FEE5"
+        class="card"
+        [ngClass]="{ 'bg-warning': item.quantity == 1 }"
+      >
+        <img
+          [src]="item.imageUrl"
+          class="card-img-top"
+          style="width: 100%; height: 400px"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">Quntity: {{ item.quantity }}</p>
+          <p class="card-text">price: {{ item.price }}</p>
+          <div>
+            <button class="btn btn-primary" (click)="addToCart(item.id)">
+              Add To Cart
+            </button>
+            <!-- <button class="btn btn-primary ms-3" (click)="ShowDetails(item.id)"> -->
+            <button
+              class="btn btn-primary ms-3"
+              [routerLink]="['/details', item.id]"
+            >
+              Details
+            </button>
+          </div>
+          <div>
+            <button
+              class="btn btn-primary my-2 ms-md-3"
+              (click)="goToEdit(item.id)"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary my-2 ms-md-3"
+              (click)="deleteProduct(item.id)"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </ng-container>
+</div>
+<h4>Birth Date : {{ "3010627171700052" | nationalIdDate }}</h4>
+<h4>Your Credit number : {{ "1234567891234567" | creditCard : "-" }}</h4>

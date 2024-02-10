@@ -1,0 +1,151 @@
+<form class="px-4 my-5" [formGroup]="userRegisterForm" (ngSubmit)="OnSubmit()">
+  <div class="form-group">
+    <label for="yourName">Name:</label>
+    <input
+      type="text"
+      class="form-control my-3"
+      id="yourName"
+      placeholder="Enter Your Name"
+      formControlName="name"
+    />
+  </div>
+  <!-- @if(registerForm.get("name")?.value.touched && registerForm.get("name")?.value.dirty){
+  @if(registerForm.errors?.['required']){
+  <div>
+    <span class="text-danger">Name is required</span>
+  </div>
+  } } -->
+  <!-- @if(getName?.touched && getName?.dirty){ 
+    @if(getName?.errors?.['required']){
+      <div>
+        <span class="text-danger">Name is required</span>
+      </div>
+    } 
+  } -->
+  @if(getName?.touched && getName?.dirty){ @if(getName?.errors?.["required"]) {
+  <div class="my-3">
+    <span class="text-danger">Name is required</span>
+  </div>
+  } @if(getName?.errors?.["pattern"]) {
+  <div class="my-3">
+    <span class="text-danger">Name should be at least 3 characaters</span>
+  </div>
+  } }
+
+  <div class="form-group">
+    <label for="emailInput">Email:</label>
+    <input
+      type="email"
+      class="form-control my-3"
+      id="emailInput"
+      aria-describedby="emailHelp"
+      placeholder="Enter Your Email Address"
+      name="email"
+      formControlName="email"
+    />
+  </div>
+  @if(getEmail?.touched && getEmail?.dirty){ @if(getEmail?.errors?.["required"])
+  {
+  <div class="my-3">
+    <span class="text-danger">Email is required</span>
+  </div>
+  } @if(getEmail?.errors?.["pattern"]) {
+  <div class="my-3">
+    <span class="text-danger">Enter Vaild email Format</span>
+  </div>
+  } }
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      class="form-control my-3"
+      id="password"
+      placeholder="Enter your Password"
+      name="password"
+      formControlName="password"
+    />
+  </div>
+  @if(getPass?.touched && getPass?.dirty){ @if(getPass?.errors?.["required"]) {
+  <div class="my-3">
+    <span class="text-danger">Password is required</span>
+  </div>
+  } }
+
+  <ng-container formGroupName="address">
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input
+        type="text"
+        class="form-control my-3"
+        id="city"
+        placeholder="Enter your City "
+        name="city"
+        formControlName="city"
+      />
+    </div>
+    @if(getCity?.touched && getCity?.dirty){ @if(getCity?.errors?.["required"])
+    {
+    <div class="my-3">
+      <span class="text-danger">City is required</span>
+    </div>
+    } }
+
+    <div class="form-group">
+      <label for="stNo">StNo:</label>
+      <input
+        type="number"
+        class="form-control my-3"
+        id="stNo"
+        placeholder="Enter your Street Number"
+        name="stno"
+        formControlName="street"
+      />
+    </div>
+    @if(getStNo?.touched && getStNo?.dirty){ @if(getStNo?.errors?.["required"])
+    {
+    <div class="my-3">
+      <span class="text-danger">Street No. is required</span>
+    </div>
+    } }
+  </ng-container>
+
+  <ng-container formArrayName="phones">
+    <div class="form-group">
+      <label for="phones">Phones:</label>
+
+      @for (phone of phones.controls;let i = $index; track i ) {
+      <div class="d-flex mb-2">
+        <input
+          type="number"
+          class="form-control"
+          id="phones"
+          placeholder="Enter your Phone Number"
+          [formControlName]="i"
+        />
+        <button
+          type="button"
+          class="btn btn-danger ms-2"
+          (click)="deletePhoneNo(i)"
+        >
+          Delete
+        </button>
+      </div>
+      }
+    </div>
+  </ng-container>
+
+  <button
+    type="button"
+    class="btn btn-success mb-2 d-block"
+    (click)="addPhoneNo()"
+  >
+    Add
+  </button>
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="userRegisterForm.invalid"
+  >
+    Register
+  </button>
+</form>
